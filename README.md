@@ -16,5 +16,5 @@ Then
 ```
 
 - It will open the file containing your Device Codename.
-- Write the Source & Device Changelogs according to this [**Format**](https://github.com/Ten-X-Devices/TenX_Changelogs/blob/master/X00T/changelog.txt).
+- Write the Source & Device Changelogs according to this [**Format**](https://github.com/Ten-X-Devices/TenX_Changelogs/blob/master/Format/Format.txt).
 
