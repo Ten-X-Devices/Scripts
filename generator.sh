@@ -40,9 +40,9 @@ git push -f origin HEAD:master
 
 # Ask them whether they have to create their device file or it's existing
 function options() {
-  echo -e " Create the file or it's existing "
-  echo -e " 1.Existing"
-  echo -e " 2.Create"
+  echo -e " Select the option "
+  echo -e " 1.Existing device"
+  echo -e " 2.Create a new device"
   read ch
 
 case $ch in
@@ -61,8 +61,7 @@ if [[ "ch" = "1" ]]; then
    read_device
 elif [[ "ch" = "2" ]]; then
    create_device
-   else
-break
+else
 push_all
 exit
 fi
