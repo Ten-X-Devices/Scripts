@@ -12,7 +12,7 @@ TenX Scripts
 Then
 
 ```bash
-      bash tenx.sh
+      bash generator.sh
 ```
 
 - It will open the file containing your Device Codename.
