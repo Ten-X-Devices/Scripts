@@ -38,6 +38,13 @@ fi
 git push -f origin HEAD:master
 }
 
+# Functiom rm all
+function rm_all() {
+cd ~
+echo -e "Removing Changelogs files"
+rm -rf Changelogs
+}
+
 # Ask them whether they have to create their device file or it's existing
 function options() {
   echo -e " Select the option "
@@ -63,6 +70,7 @@ elif [[ "ch" = "2" ]]; then
    create_device
 else
 push_all
+rm_all
 exit
 fi
 }
