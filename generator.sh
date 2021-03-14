@@ -24,7 +24,7 @@ function create_device() {
   read newdevice
   mkdir $newdevice
   cd $newdevice
-  nano $newdevice.txt
+  nano tenx_$newdevice.txt
 }
 
 # Push to GitHub
