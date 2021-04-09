@@ -1,12 +1,12 @@
 TenX Scripts
 ============
 
-- How to use ?
+- How to use the Changelogs generator Script?
 
 - Do the following in your ROM directory!
 
 ```bash
-      wget https://raw.githubusercontent.com/Ten-X-Devices/Scripts/master/generator.sh
+      wget https://raw.githubusercontent.com/Ten-X-Devices/Scripts/master/Changelogs/generator.sh
 ```
 
 Then
@@ -18,3 +18,18 @@ Then
 - It will open the file containing your Device Codename.
 - Write the Source & Device Changelogs according to this [**Format**](https://github.com/Ten-X-Devices/TenX_Changelogs/blob/master/Format/Format.txt).
 
+----------------------------------------------------------------------
+
+- How to use the OTA  generator Script?
+
+- Do the following in your ROM directory!
+
+```bash
+      wget https://raw.githubusercontent.com/Ten-X-Devices/Scripts/master/OTA/OTA.sh
+```
+
+Then
+
+```bash
+      bash OTA.sh
+```
