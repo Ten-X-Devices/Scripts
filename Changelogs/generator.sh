@@ -31,9 +31,9 @@ function create_device() {
 function push_all() {
 git add .
 if [[ $ch -eq 1 ]]; then
-    git commit -m "$commit_message Update $devicename [$date]"
+    git commit -m "$commit_message [TenX-CI] Update $devicename [$date]"
 else
-    git commit -m "$commit_message Add $newdevice [$date]"
+    git commit -m "$commit_message [TenX-CI] Add $newdevice [$date]"
 fi
 git push -f origin HEAD:master
 }
