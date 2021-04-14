@@ -25,7 +25,7 @@ function create_device() {
   mkdir $newdevice
   cd $newdevice
   wget $format
-  mv $format.json $newdevice.json
+  mv Format.json $newdevice.json
   nano $newdevice.json
 }
 
