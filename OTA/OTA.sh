@@ -52,7 +52,7 @@ git push -f origin HEAD:master
 function rm_all() {
   cd ~
   echo -e "Removing OTA files"
-  rm -rf OTA
+  rm -rf OTA*
 }
 
 # Function gen OTA

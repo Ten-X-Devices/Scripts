@@ -42,7 +42,8 @@ git push -f origin HEAD:master
 function rm_all() {
 cd ~
 echo -e "Removing Changelogs files"
-rm -rf Changelogs*
+rm -rf Changelogs
+rm -rf generator.sh
 }
 
 # Ask them whether they have to create their device file or it's existing
