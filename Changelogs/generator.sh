@@ -35,7 +35,7 @@ if [[ $ch -eq 1 ]]; then
 else
     git commit -m "$commit_message [TenX-CI] Add $newdevice [$date]"
 fi
-git push -f origin HEAD:master
+git push -u origin HEAD:master
 }
 
 # Functiom rm all
