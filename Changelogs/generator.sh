@@ -7,7 +7,7 @@ cd ~
 commit_message="Changelogs: "
 date=$(date)
 
-git clone https://github.com/Ten-X-Devices/TenX_Changelogs.git -b master Changelogs
+git clone --quiet https://github.com/Ten-X-Devices/TenX_Changelogs.git -b master Changelogs > /dev/null
 cd ~/Changelogs
 
 # Read device function
@@ -31,11 +31,11 @@ function create_device() {
 function push_all() {
 git add .
 if [[ $ch -eq 1 ]]; then
-    git commit -m "$commit_message [TenX-CI] Update $devicename [$date]" --signoff
+    git commit --quiet -m "$commit_message [TenX-CI] Update $devicename [$date]" --signoff > /dev/null
 else
-    git commit -m "$commit_message [TenX-CI] Add $newdevice [$date]" --signoff
+    git commit --quiet -m "$commit_message [TenX-CI] Add $newdevice [$date]" --signoff > /dev/null
 fi
-git push -u origin HEAD:master
+git push --quiet -u origin HEAD:master > /dev/null
 }
 
 # Functiom rm all
