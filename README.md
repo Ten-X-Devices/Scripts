@@ -33,3 +33,19 @@ Then
 ```bash
       bash OTA.sh
 ```
+
+Or
+
+```bash
+      wget https://raw.githubusercontent.com/Ten-X-Devices/Scripts/master/OTA/OTA.sh
+```
+
+Then
+
+```bash
+      chmod +x OTA.sh
+```
+
+```bash
+      ./OTA.sh
+```
