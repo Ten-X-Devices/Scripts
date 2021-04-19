@@ -7,7 +7,9 @@ cd ~
 commit_message="OTA: "
 date=$(date)
 
-git clone https://github.com/Ten-X-Devices/TenX_OTA.git -b master OTA
+rm -rf ~/OTA*
+
+git clone --quiet https://github.com/Ten-X-Devices/TenX_OTA.git -b master OTA > /dev/null
 cd ~/OTA
 
 format="https://raw.githubusercontent.com/Ten-X-Devices/TenX_OTA/master/Format/Format.json"
@@ -24,7 +26,7 @@ function create_device() {
   read newdevice
   mkdir $newdevice
   cd $newdevice
-  wget $format
+  wget -q $format 
   mv Format.json $newdevice.json
   nano $newdevice.json
 }
@@ -41,11 +43,11 @@ cd ~
 cd OTA
 git add .
 if [[ $ch -eq 1 ]]; then
-    git commit -m "$commit_message [TenX-CI] Update $devicename [$date]"
+    git commit --quiet -m "$commit_message [TenX-CI] Update $devicename [$date]" --signoff > /dev/null
 else
-    git commit -m "$commit_message [TenX-CI] Add $newdevice [$date]"
+    git commit --quiet -m "$commit_message [TenX-CI] Add $newdevice [$date]" --signoff > /dev/null
 fi
-git push -u origin HEAD:master
+git push --quiet -u origin HEAD:master > /dev/null
 }
 
 # Function rm all
@@ -59,11 +61,10 @@ function rm_all() {
 function gen_ota() {
    cd ~
    zip_path=~/$dir/out/target/product/$devicename/TenX-OS_*.zip
-   set -e
 
    # Build ID
    build_id=`sha256sum $zip_path | cut -d' ' -f1`
-   old_build_id=`cat ~/OTA/$devicename/$devicename.json | grep "id" | cut -d':' -f2 | cut -d'"' -f2`
+   old_build_id=`cat ~/OTA/$devicename/$devicename.json | grep -w "id" | cut -d':' -f2 | cut -d'"' -f2`
    `sed -i "s|$old_build_id|$build_id|g" ~/OTA/$devicename/$devicename.json`
 
    # Filename
@@ -83,7 +84,7 @@ function gen_ota() {
 
    # url
    url="https://sourceforge.net/projects/tenx-os/files/$devicename/$file_name/download"
-   old_url=`cat ~/OTA/$devicename/$devicename.json | grep https | cut -d '"' -f4`
+   old_url=`cat ~/OTA/$devicename/$devicename.json | grep -w url | cut -d '"' -f4`
    `sed -i "s|$old_url|$url|g" ~/OTA/$devicename/$devicename.json`
 
    # md5
