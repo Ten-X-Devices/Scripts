@@ -24,8 +24,7 @@ function read_device() {
 function create_device() {
   echo -e " Enter your new device codename: "
   read newdevice
-  mkdir $newdevice
-  cd $newdevice
+  cd builds
   wget -q $format 
   mv Format.json $newdevice.json
   nano $newdevice.json
@@ -64,33 +63,33 @@ function gen_ota() {
 
    # Build ID
    build_id=`sha256sum $zip_path | cut -d' ' -f1`
-   old_build_id=`cat ~/OTA/$devicename/$devicename.json | grep -w "id" | cut -d':' -f2 | cut -d'"' -f2`
-   `sed -i "s|$old_build_id|$build_id|g" ~/OTA/$devicename/$devicename.json`
+   old_build_id=`cat ~/OTA/builds/$devicename.json | grep -w "id" | cut -d':' -f2 | cut -d'"' -f2`
+   `sed -i "s|$old_build_id|$build_id|g" ~/OTA/builds/$devicename.json`
 
    # Filename
    file_name=`echo $zip_path | cut -d'/' -f9`
-   old_file_name=`cat ~/OTA/$devicename/$devicename.json | grep "filename" | cut -d':' -f2 | cut -d'"' -f2`
-   `sed -i "s|$old_file_name|$file_name|g" ~/OTA/$devicename/$devicename.json`
+   old_file_name=`cat ~/OTA/builds/$devicename.json | grep "filename" | cut -d':' -f2 | cut -d'"' -f2`
+   `sed -i "s|$old_file_name|$file_name|g" ~/OTA/builds/$devicename.json`
 
    # datetime
    date_time=`cat ~/$dir/out/target/product/$devicename/system/build.prop | grep ro.build.date.utc | cut -d'=' -f2`
-   old_datetime=`cat ~/OTA/$devicename/$devicename.json | grep "datetime" | cut -d':' -f2 | cut -d',' -f1`
-   `sed -i "s|$old_datetime|$date_time|g" ~/OTA/$devicename/$devicename.json`
+   old_datetime=`cat ~/OTA/builds/$devicename.json | grep "datetime" | cut -d':' -f2 | cut -d',' -f1`
+   `sed -i "s|$old_datetime|$date_time|g" ~/OTA/builds/$devicename.json`
 
    # Rom size
    size=`stat -c "%s" $zip_path`
-   old_size=`cat ~/OTA/$devicename/$devicename.json | grep "size" | cut -d':' -f2 | cut -d',' -f1`
-   `sed -i "s|$old_size|$size|g" ~/OTA/$devicename/$devicename.json`
+   old_size=`cat ~/OTA/builds/$devicename.json | grep "size" | cut -d':' -f2 | cut -d',' -f1`
+   `sed -i "s|$old_size|$size|g" ~/OTA/builds/$devicename.json`
 
    # url
    url="https://sourceforge.net/projects/tenx-os/files/$devicename/$file_name/download"
-   old_url=`cat ~/OTA/$devicename/$devicename.json | grep -w url | cut -d '"' -f4`
-   `sed -i "s|$old_url|$url|g" ~/OTA/$devicename/$devicename.json`
+   old_url=`cat ~/OTA/builds/$devicename.json | grep -w url | cut -d '"' -f4`
+   `sed -i "s|$old_url|$url|g" ~/OTA/builds/$devicename.json`
 
    # md5
    md5=`md5sum $zip_path | cut -d' ' -f1`
-   old_md5=`cat ~/OTA/$devicename/$devicename.json | grep "filehash" | cut -d':' -f2 | cut -d'"' -f2`
-   `sed -i "s|$old_md5|$md5|g" ~/OTA/$devicename/$devicename.json`
+   old_md5=`cat ~/OTA/builds/$devicename.json | grep "filehash" | cut -d':' -f2 | cut -d'"' -f2`
+   `sed -i "s|$old_md5|$md5|g" ~/OTA/builds/$devicename.json`
 }
 
 if [[ $ch -eq 1 ]]; then
