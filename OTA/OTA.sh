@@ -59,7 +59,7 @@ function rm_all() {
 # Function gen OTA
 function gen_ota() {
    cd ~
-   zip_path=~/$dir/out/target/product/$devicename/TenX-OS_*.zip
+   zip_path=~/$dir/out/target/product/$devicename/TenX-OS-*.zip
 
    # Build ID
    build_id=`sha256sum $zip_path | cut -d' ' -f1`
