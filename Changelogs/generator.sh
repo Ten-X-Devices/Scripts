@@ -14,14 +14,15 @@ cd ~/Changelogs
 function read_device() {
   echo -e " Enter your existing device codename: "
   read devicename
-  cd $devicename
-  nano *
+  cd changelogs/$devicename
+  nano tenx_$devicename.txt
 }
 
 # Create device function
 function create_device() {
   echo -e " Enter your new device codename: "
   read newdevice
+  cd changelogs
   mkdir $newdevice
   cd $newdevice
   nano tenx_$newdevice.txt
